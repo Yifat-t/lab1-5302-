@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>v-if If Statements</title>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.special {
+			background: yellow;
+			border: 1px dotted #fe0000;
+			padding: 30px;
+			display: block;
+			text-align: center;
+		}
+
+		.important {
+			font-weight: bold;
+			font-size: 30px;
+		}
+
+		.card {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			transition: 0.3s;
+			width: 40%;
+		}
+
+		.card:hover {
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.container {
+			padding: 2px 16px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="app">
+		<figure class="card">
+			<h1>Card</h1>
+
+
+			<span v-if="profile.picture">
+				<img v-bind:src="profile.picture" /><br>
+				{{profile.figcaption}}
+			</span>
+			<span v-else>
+				No picture found.
+			</span>
+			<br>
+
+			<h2>
+				<span v-if="profile">
+					{{profile.fname}} {{profile.lname}}
+				</span>
+			</h2>
+
+
+			<span v-if="profile.desc">
+				Description: {{profile.desc}}
+			</span>
+			<br>
+
+
+			<span v-if="profile.bio">
+				Bio: {{profile.bio}}
+			</span><br>
+			<span v-else>
+				No bio found.
+			</span>
+		</figure>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el: '#app',
+
+			data: {
+
+				profile: {
+					fname: "Yifat",
+					lname: "Tshuva",
+					desc: "I'm 34 years old and lives in Toronto, Canada",
+					bio: "I'm a student at Humber college",
+					picture: "1516973351320.jpg",
+					figcaption: "Fig.1 - Yifat Tshuva, a few years back."
+
+				}
+
+			}
+
+		});
+	</script>
+
+	<!--
+		//step 1: Read Code Above
+		//step 2: Does the profile show up?no
+		
+		v-if="boolean_expression"
+		v-else-if="boolean_expression"
+		v-else
+		
+		
+		You can code an if, else if, else statement into your render using the v-if, v-else-if, v-else.
+		Just like in regular programming, v-else has no condition
+		
+		Notice how the "profile" object is null. Reminder that null is Falsey in the boolean context.
+		
+		ASYNCHRONOUS LEARNING EXERCISE
+		1. Use the profile object to store information about yourself {fname, lname, desc, bio, pic}
+		2. Create a figure, figcaption, and image markup which acts as a description for yourself
+			(Something like this https://www.w3schools.com/howto/howto_css_cards.asp)
+		3. Write conditionals if information is missing (i.e. 'no bio available' if bio is blank, generic image if no pic is found)
+		-->
+</body>
+
+</html>
